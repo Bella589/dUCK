@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+#duck {
+  width: 80%;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.duck {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+#clicks {
+  font-weight: bold;
+  color: black;
+}
+.duck-button {
+  background-image: url('/assets/duck.png');
+  background-size: cover;
+  width: 40%;
+  height: 50%;
+  border: none;
+}
+
+#duck-container img {
+  position: fixed;
+  width: 50%;
+  height: 50%;
+  transition: top 1s linear, opacity 1s linear;
+}
+
+<script>
+var clicks = 0;
+var maxDucks = 1000;
+function count() {
+  clicks += 1;
+  document.getElementById("clicks").innerHTML = clicks;
+  if (clicks < maxDucks) {
+    var duck = document.createElement("IMG");
+    duck.src = "/assets/duck.png";
+    duck.classList.add("duck");
+    duck.onclick = count;
+    document.body.appendChild(duck);
+  }
+}
+</script>
+
+
+<button onclick="reset()">Reset</button>
+<script>
+function reset() {
+  clicks = 0;
+  document.getElementById("clicks").innerHTML = clicks;
+  var ducks = document.getElementsByClassName("duck");
+  while (ducks.length > 0) {
+    ducks[0].parentNode.removeChild(ducks[0]);
+  }
+}
+
+function createDuck() {
+  let duckContainer = document.getElementById("duck-container");
+  let duck = document.createElement("img");
+  duck.src = "/assets/duck.png";
+  duck.style.top = event.clientY + "px";
+  duck.style.left = event.clientX + "px";
+  duckContainer.appendChild(duck);
+  
+  setTimeout(function() {
+    duck.style.top = (window.innerHeight + duck.offsetHeight) + "px";
+    duck.style.opacity = "0";
+  }, 50);
+
+
+
