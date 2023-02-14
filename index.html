@@ -1,8 +1,37 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <body>
 
-<button id="duck" onclick="count()" style="background-image: url('/assets/duck.png'); background-size: cover; width: 200px; height: 200px;"></button>
+  <body>
+
+
+<p>Number of clicks: <span id="clicks"></span></p>
+
+    <script>
+  var clicks = 0;
+  document.getElementById("clicks").innerHTML = clicks;
+  
+  function count() {
+    clicks += 1;
+    document.getElementById("clicks").innerHTML = clicks;
+  }
+
+      
+  let duckContainer = document.getElementById("duck-container");
+
+document.getElementById("duck").addEventListener("click", function(event) {
+let duck = document.createElement("img");
+
+  fetch("https://www.npmjs.com/package/duckduckgo-images-api?activeTab=readme")
+.then(response => response.blob())
+.then(blob => {
+duck.src = URL.createObjectURL(blob);
+duck.classList.add("duck");
+duck.style.top = event.clientY + "px";
+duck.style.left = event.clientX + "px";
+duckContainer.appendChild(duck);
+  
+</script>
 
   <button id="duck" onclick="createDuck()" class="duck-button"></button>
 <div id="duck-container"></div>
@@ -27,4 +56,26 @@
   
 </body>
 
+</html>
+ -->
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Duck Button</title>
+    <style>
+      #duck-button {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Duck Button</h1>
+  <a href="#" id="duck-link"><img id="duck-button" src="/assets/duck.png"></a>
+
+    <p>Number of ducks: <span id="duck-count">0</span></p>
+    <script src="script.js"></script>
+  </body>
 </html>

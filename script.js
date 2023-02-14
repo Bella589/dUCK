@@ -1,51 +1,19 @@
-// let clickCount = 0;
+const duckButton = document.getElementById("duck-button");
+const duckLink = document.getElementById("duck-link");
+const duckCount = document.getElementById("duck-count");
+let count = 0;
 
-// function createDuck() {
-//   clickCount++;
-//   document.getElementById("click-count").innerHTML = "Number of clicks: " + clickCount;
+duckLink.addEventListener("click", function(event) {
+  event.preventDefault();
+  count++;
+  duckCount.innerText = count;
   
-//   let duckContainer = document.getElementById("duck-container");
-//   let duck = document.createElement("img");
-//   duck.src = "/assets/duck.png";
-//   duck.style.top = event.clientY + "px";
-//   duck.style.left = event.clientX + "px";
-//   duckContainer.appendChild(duck);
-  
-//   setTimeout(function() {
-//     duck.style.top = (window.innerHeight + duck.offsetHeight) + "px";
-//     duck.style.opacity = "0";
-//   }, 50);
-// }
-
+  const duck = document.createElement("img");
+  duck.src = "https://picsum.photos/200/200?random=" + Math.floor(Math.random() * 1000);
+  duck.classList.add("duck");
+  duck.style.top = Math.random() * (window.innerHeight - 100) + "px";
+  duck.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  document.body.appendChild(duck);
+});
 
 
-function createDuck() {
-  let duckContainer = document.getElementById("duck-container");
-  let duck = document.createElement("img");
-  duck.src = "/assets/duck.png";
-  duck.style.position = "fixed";
-  duck.style.top = event.clientY + "px";
-  duck.style.left = event.clientX + "px";
-  duck.style.width = "100px";
-  duck.style.height = "100px";
-  duck.style.transition = "top 1s linear, opacity 1s linear";
-  duckContainer.appendChild(duck);
-  
-  setTimeout(function() {
-    duck.style.top = (window.innerHeight + duck.offsetHeight) + "px";
-    duck.style.opacity = "0";
-  }, 50);
-}
-function createDuck() {
-  let duckContainer = document.getElementById("duck-container");
-  let duck = document.createElement("img");
-  duck.src = "/assets/duck.png";
-  duck.style.top = event.clientY + "px";
-  duck.style.left = event.clientX + "px";
-  duckContainer.appendChild(duck);
-  
-  setTimeout(function() {
-    duck.style.top = (window.innerHeight + duck.offsetHeight) + "px";
-    duck.style.opacity = "0";
-  }, 50);
-}
